@@ -12,6 +12,8 @@ import {SharedModule} from '../../shared/shared.module';
 import {AdminRoutingModule} from './admin-routing.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import { LayoutComponent } from './components/layout/layout.component';
+import { MatLegacyChipsModule } from "@angular/material/legacy-chips";
+import { CdkDrag, CdkDropList } from "@angular/cdk/drag-drop";
 
 @NgModule({
   declarations: [
@@ -30,6 +32,9 @@ import { LayoutComponent } from './components/layout/layout.component';
         AdminRoutingModule,
         SharedModule,
         ReactiveFormsModule,
+        MatLegacyChipsModule,
+        CdkDropList,
+        CdkDrag,
     ]
 })
 export class AdminModule { }

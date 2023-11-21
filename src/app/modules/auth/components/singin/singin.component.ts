@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-import {Router} from '@angular/router';
-import {HttpErrorResponse} from '@angular/common/http';
+import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 import { of } from 'rxjs';
-import {catchError} from 'rxjs/operators';
-import {AuthUtils} from '../../utils';
+import { catchError } from 'rxjs/operators';
+import { AuthUtils } from '../../utils';
 
 @Component({
   selector: 'app-singin',

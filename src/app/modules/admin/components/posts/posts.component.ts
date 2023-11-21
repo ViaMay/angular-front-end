@@ -1,8 +1,8 @@
 import { Post } from '../../../../core/interfaces/post';
 import { PostsService } from 'src/app/core/services/posts.service';
 import { Component, OnInit } from '@angular/core';
-import {delay, tap} from 'rxjs/operators';
-import {Router} from '@angular/router';
+import { delay, tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-posts',

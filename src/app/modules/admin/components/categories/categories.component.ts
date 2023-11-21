@@ -1,8 +1,7 @@
 import { Category } from '../../../../core/interfaces/category';
 import { CategoriesService } from 'src/app/core/services/categories.service';
 import { Component, OnInit } from '@angular/core';
-import {delay, tap} from 'rxjs/operators';
-import {Router} from '@angular/router';
+import { delay, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-categories',
@@ -19,7 +18,6 @@ export class CategoriesComponent implements OnInit {
   dataSourcePage: Category [] = [];
 
   constructor(
-    private readonly router: Router,
     private readonly categoriesService: CategoriesService
   ) {
     this.page = 1;
@@ -40,7 +38,7 @@ export class CategoriesComponent implements OnInit {
   remove(id: string): void {
     this.categoriesService.remove(id).pipe(
       tap(() => {
-        this.dataSource = this.dataSource.filter((category: Category, i) => category.id !== id);
+        this.dataSource = this.dataSource.filter((category: Category) => category.id !== id);
         this.dataSourcePage = this.dataSource.filter((category, i) => i < this.pageSize * this.page && i >=
           this.pageSize * (this.page - 1));
       }

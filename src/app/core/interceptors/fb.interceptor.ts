@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AuthService } from './../../modules/auth/services/auth.service';
+import { AuthService } from '../../modules/auth/services/auth.service';
 import {
   HttpRequest,
   HttpHandler,
@@ -18,11 +18,11 @@ export class FbInterceptor implements HttpInterceptor {
     if (!this.authService.token) {
       return next.handle(request);
     }
-    const clon: HttpRequest<unknown> = request.clone({
+    const clone: HttpRequest<unknown> = request.clone({
       setParams: {
         auth: this.authService.token
       }
     });
-    return next.handle(clon);
+    return next.handle(clone);
   }
 }

@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Post} from '../../../../core/interfaces/post';
-import {Router} from '@angular/router';
-import {PostsService} from '../../../../core/services/posts.service';
-import {MatTableDataSource} from '@angular/material/table';
-import {CategoriesService} from "../../../../core/services/categories.service";
-import {Category} from "../../../../core/interfaces/category";
+import { Post } from '../../../../core/interfaces/post';
+import { PostsService } from '../../../../core/services/posts.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { CategoriesService } from "../../../../core/services/categories.service";
+import { Category } from "../../../../core/interfaces/category";
 
 @Component({
   selector: 'app-posts',
@@ -21,7 +20,6 @@ export class PostsComponent implements OnInit {
   postsPage: Post [] = [];
   categories: Category [] = [];
   constructor(
-    private readonly router: Router,
     private readonly postsService: PostsService,
     private readonly categoriesService: CategoriesService
   ) {
@@ -35,15 +33,15 @@ export class PostsComponent implements OnInit {
         this.postsService.find().subscribe(
             (posts: Post[]) => {
               this.posts = posts;
+              this.posts = this.posts.map(post => {
+                    const category = this.categories.find(category => category.id === post.categoryId);
+                    if (category) {
+                        return { ...post, categoryName: category.name };
+                    }
+                    return { ...post, categoryName: post.categoryId };
+                });
               this.collectionSize = this.posts.length;
-              this.postsPage = posts.filter((post, i) => i < this.pageSize);
-              this.postsPage = this.postsPage.map(post => {
-                const category = this.categories.find(category => category.id === post.categoryId);
-                if (category) {
-                  return { ...post, categoryName: category.name };
-                }
-                return { ...post, categoryName: post.categoryId };
-              });
+              this.postsPage = this.posts.filter((post, i) => i < this.pageSize);
             }
         );
       }
@@ -53,7 +51,6 @@ export class PostsComponent implements OnInit {
   onPageChanged(pageNumber: number): void  {
     this.postsPage = this.posts.filter((post, i) => i < this.pageSize * pageNumber && i >=
       this.pageSize * (pageNumber - 1));
-    console.log(this.postsPage );
   }
 
   filterSubject(filterValue: string): void {

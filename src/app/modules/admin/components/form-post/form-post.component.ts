@@ -1,10 +1,9 @@
 import { Post } from '../../../../core/interfaces/post';
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import {Router} from '@angular/router';
-import {CategoriesService} from '../../../../core/services/categories.service';
-import {delay} from 'rxjs/operators';
-import {Category} from '../../../../core/interfaces/category';
+import { CategoriesService } from '../../../../core/services/categories.service';
+import { delay } from 'rxjs/operators';
+import { Category } from '../../../../core/interfaces/category';
 
 @Component({
   selector: 'app-form-post',
@@ -13,7 +12,6 @@ import {Category} from '../../../../core/interfaces/category';
 })
 export class FormPostComponent implements OnInit {
   constructor(
-    private readonly router: Router,
     private readonly categoriesService: CategoriesService
   ) {
   }
