@@ -40,7 +40,7 @@ export class PostsComponent implements OnInit {
   remove(id: string): void {
     this.postsService.remove(id).pipe(
       tap(() => {
-          this.dataSource = this.dataSource.filter((post: Post, i) => post.id !== id);
+          this.dataSource = this.dataSource.filter((post: Post) => post.id !== id);
           this.dataSourcePage = this.dataSource.filter((post, i) => i < this.pageSize * this.page && i >=
             this.pageSize * (this.page - 1));
         }

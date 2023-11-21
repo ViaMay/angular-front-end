@@ -28,7 +28,7 @@
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field><br>
 
-      <mat-form-field appearance="Category">
+      <mat-form-field class="example-full-width">
         <mat-label>Category</mat-label>
         <mat-select formControlName="categoryId" required>
           <mat-option *ngFor="let category of categories" [value]="category.id">

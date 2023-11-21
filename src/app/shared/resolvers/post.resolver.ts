@@ -3,7 +3,7 @@ import { Post } from '../../core/interfaces/post';
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { StoreService } from 'src/app/core/services/store.service';
 
 
