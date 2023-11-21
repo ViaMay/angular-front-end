@@ -1,0 +1,13 @@
+<div class="card" *ngIf="post">
+  <div class="card-body">
+    <h2 class="card-title">Title:{{ post.title }}</h2>
+    <p class="card-text">Text: {{ post.text }}</p>
+    <p class="card-text">Author: {{ post.author }}</p>
+    <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
+      <mat-chip class="example-box" cdkDrag *ngFor="let tag of post.tags">
+        {{ tag }}
+      </mat-chip>
+    </mat-chip-list><br>
+    <p class="card-text">Category: {{ post.categoryName }}</p>
+  </div>
+</div>

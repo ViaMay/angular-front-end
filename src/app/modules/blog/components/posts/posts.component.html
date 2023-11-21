@@ -1,0 +1,26 @@
+<mat-form-field  *ngIf="page===1">
+  <input matInput (keyup)="filterSubject($any($event.target).value)" placeholder="Filter">
+</mat-form-field>
+<mat-form-field  *ngIf="page!=1">
+  <input matInput disabled placeholder="Filter">
+</mat-form-field>
+<ng-container *ngFor="let post of postsPage">
+  <div class="card">
+    <div class="card-body">
+      <h2 class="card-title">{{ post.title }}</h2>
+      <p class="card-text">{{ post.text }}</p>
+      <p class="card-text">Author: {{ post.author }}</p>
+      <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
+        <mat-chip class="example-box" cdkDrag *ngFor="let tag of post.tags">
+          {{ tag }}
+        </mat-chip>
+      </mat-chip-list>
+      <br>
+
+      <p class="card-text">Category: {{ post.categoryName }}</p><br>
+      <a [routerLink]="['/blog', 'posts', post.id]" class="btn btn-primary">See more</a>
+    </div>
+  </div></ng-container>
+
+<ngb-pagination class="d-flex justify-content-center" [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" [maxSize]="7" [rotate]="true" [boundaryLinks]="true" (pageChange)="onPageChanged($event)"></ngb-pagination>
+<br>
