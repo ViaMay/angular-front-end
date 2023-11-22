@@ -45,15 +45,10 @@ export class CategoriesService {
   }
 
   remove(id: string): Observable<null> {
-    return this.httpClient.delete<null>(`${environment.localUrl}/categories/${id}`)
+    return this.httpClient.delete<null>(`${environment.localUrl}/categories/${id}`);
   }
 
   update(category: Category): Observable<Category> {
-    return this.httpClient.patch<Category>(`${environment.localUrl}/categories/${category.id}`, category).pipe(
-        map(({ name }: { name: string }) => ({
-            ...category,
-            id: name
-        }))
-    );
+    return this.httpClient.patch<Category>(`${environment.localUrl}/categories/${category.id}`, category);
   }
 }

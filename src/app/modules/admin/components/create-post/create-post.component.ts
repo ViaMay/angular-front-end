@@ -20,6 +20,8 @@ export class CreatePostComponent implements OnInit {
   }
 
   submit(post: Post): void {
-    this.postsService.create(post).pipe().subscribe(() => this.router.navigateByUrl('/admin/posts'));
+    this.postsService.create(post).pipe(
+      tap(() => this.router.navigateByUrl('/admin/posts'))
+    ).subscribe();
   }
 }

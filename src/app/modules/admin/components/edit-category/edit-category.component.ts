@@ -32,6 +32,8 @@ export class EditCategoryComponent implements OnInit {
   }
 
   submit(category: Category): void {
-    this.categoriesService.update(category).pipe().subscribe(() => this.router.navigateByUrl('/admin/categories'));
+    this.categoriesService.update(category).pipe(
+      tap(() => this.router.navigateByUrl('/admin/categories'))
+    ).subscribe();
   }
 }
