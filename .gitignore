@@ -1,5 +1,6 @@
 # other
 /src/static/*
+.angular
 
 # compiled output
 /dist

@@ -33,8 +33,6 @@ export class EditPostComponent implements OnInit {
   }
 
   submit(post: Post): void {
-    this.postsService.update(post).pipe(
-      tap(() => this.router.navigateByUrl('/admin/posts'))
-    ).subscribe();
+    this.postsService.update(post).pipe().subscribe(() => this.router.navigateByUrl('/admin/posts'));
   }
 }

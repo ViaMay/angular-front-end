@@ -15,7 +15,6 @@ export class PostsService {
   ) {}
 
   create(post: Post): Observable<Post> {
-    console.log(post);
     return this.httpClient
       .post<{ name: string }>(`${environment.localUrl}/posts`, post)
       .pipe(

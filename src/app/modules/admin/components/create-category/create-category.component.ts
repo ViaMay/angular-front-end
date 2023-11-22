@@ -20,8 +20,6 @@ export class CreateCategoryComponent implements OnInit {
   }
 
   submit(category: Category): void {
-    this.categoriesService.create(category).pipe(
-      tap(() => this.router.navigateByUrl('/admin/categories'))
-    ).subscribe();
+    this.categoriesService.create(category).pipe().subscribe(() => this.router.navigateByUrl('/admin/categories'));
   }
 }

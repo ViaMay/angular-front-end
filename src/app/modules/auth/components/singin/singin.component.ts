@@ -44,9 +44,7 @@ export class SinginComponent implements OnInit {
           return of(httpErrorResponse);
         })
       )
-      .subscribe(() => {
-        this.router.navigateByUrl('/admin/posts');
-      });
+      .subscribe(() => this.router.navigateByUrl('/admin/posts'));
   }
 }
 
